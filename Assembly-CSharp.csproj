@@ -36,6 +36,15 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Monstros\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Personagem\InventorySystem.cs" />
+     <Compile Include="Assets\Scripts\Personagem\Magias\DamageMultiply.cs" />
+     <Compile Include="Assets\Scripts\Personagem\Magias\MagicFire.cs" />
+     <Compile Include="Assets\Scripts\Personagem\Magias\MagicPoison.cs" />
+     <Compile Include="Assets\Scripts\Personagem\Magias\MagicSnow.cs" />
+     <Compile Include="Assets\Scripts\Personagem\Magic.cs" />
+     <Compile Include="Assets\Scripts\Personagem\MagicSystem.cs" />
+     <Compile Include="Assets\Scripts\Personagem\PlayerCombat.cs" />
      <Compile Include="Assets\Scripts\Personagem\playerCore.cs" />
      <Compile Include="Assets\Scripts\gameCore.cs" />
     <Reference Include="UnityEngine">
@@ -569,6 +578,9 @@
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>D:/Projetos/CatMoonDev/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>D:/Projetos/CatMoonDev/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.VSCode.Editor">
         <HintPath>D:/Projetos/CatMoonDev/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -586,6 +598,9 @@
     </Reference>
     <Reference Include="Unity.Rider.Editor">
         <HintPath>D:/Projetos/CatMoonDev/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>D:/Projetos/CatMoonDev/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
         <HintPath>D:/Projetos/CatMoonDev/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

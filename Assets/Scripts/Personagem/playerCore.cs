@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 
 public class playerCore : MonoBehaviour
 {
 	#region Variaveis
 	[SerializeField] private int speed = 20;
+
 	[SerializeField] private int life;
 	[SerializeField] private int maxLife;
 	[SerializeField] private int mana;
@@ -13,22 +15,44 @@ public class playerCore : MonoBehaviour
 	[SerializeField] private float jumpForce = 20;
 	[SerializeField] private LayerMask groundLayers;
 	[SerializeField] private CapsuleCollider col;
+	[SerializeField] private Transform playerTransform;
+	[SerializeField] private Rigidbody rbPlayer;
+	[SerializeField] private float originalHeight; 
+	[SerializeField] private float reducedHeight;
+	[SerializeField] private float slideSpeed = 7f;
+	[SerializeField] private bool isSliding;
 
-	private Rigidbody rbPlayer;
 	#endregion
 
-
-	void Start()
+	void start()
 	{
 		rbPlayer = GetComponent<Rigidbody>();
 		col = GetComponent<CapsuleCollider>();
+		playerTransform = GetComponent<Transform>();
+		originalHeight = col.height;
 	}
 
 	void Update()
 	{
 		float moveH = Input.GetAxis("Horizontal");
 		float moveV = Input.GetAxis("Vertical");
+		bool slide = Input.GetKey(KeyCode.LeftControl);
 		move(moveH, moveV);
+
+
+		if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+			isSliding = true;
+        }
+		else if(Input.GetKeyUp(KeyCode.LeftControl))
+        {
+			isSliding = false;
+			getUp();
+        }
+		if(isSliding && IsGrounded())
+        {
+			Slide();
+        }
 
 		if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
@@ -63,11 +87,52 @@ public class playerCore : MonoBehaviour
 		rbPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
+	void Slide()
+    {
+		col.height = reducedHeight;
+		if(playerTransform.rotation.eulerAngles.y == 180 && isSliding) // virado pra esquerda
+		{
+			col.center = new Vector3(0, -0.5f, 0);
+			rbPlayer.AddForce(new Vector3(-1, 0, 0) * slideSpeed, ForceMode.Impulse);
+        }
+		else if(playerTransform.rotation.eulerAngles.y == 0 && isSliding)
+        {
+			col.center = new Vector3(0, -0.5f, 0);
+			rbPlayer.AddForce(new Vector3(1, 0, 0) * slideSpeed, ForceMode.Impulse);
+		}
+
+	}
+	void getUp()
+    {
+		col.center = new Vector3(0, 0, 0);
+		col.height = originalHeight;
+    }
+
 	private bool IsGrounded()
     {
 		return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x,
 			col.bounds.min.y, col.bounds.center.z), col.radius * .9f, groundLayers);
     }
+
+	/*
+	void OnCollisionStay(Collision collisionInfo)
+	{
+		if(collisionInfo.collider.tag == "Wall" && !IsGrounded())
+        {
+			if(Input.GetKeyDown(KeyCode.Space))
+			{
+				rbPlayer.AddForce(new Vector3(10, 1, 0) * jumpForce, ForceMode.Impulse);
+				Debug.Log("WALLJUMP");
+			}
+
+        }
+	}
+
+	*/
+
+
+
+
 
     #endregion
     #region Metodos

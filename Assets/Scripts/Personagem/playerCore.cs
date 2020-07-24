@@ -13,8 +13,19 @@ public class playerCore : MonoBehaviour
 	[SerializeField] private float jumpForce = 20;
 	[SerializeField] private LayerMask groundLayers;
 	[SerializeField] private CapsuleCollider col;
+<<<<<<< Updated upstream
 
 	private Rigidbody rbPlayer;
+=======
+	[SerializeField] private Transform playerTransform;
+	[SerializeField] private Rigidbody rbPlayer;
+	[SerializeField] private float originalHeight; 
+	[SerializeField] private float reducedHeight;
+	[SerializeField] private float slideSpeed;
+	[SerializeField] private float originalSlideSpeed;
+	[SerializeField] private bool isSliding;
+	[SerializeField] private bool TouchingWall;
+>>>>>>> Stashed changes
 	#endregion
 
 
@@ -22,6 +33,12 @@ public class playerCore : MonoBehaviour
 	{
 		rbPlayer = GetComponent<Rigidbody>();
 		col = GetComponent<CapsuleCollider>();
+<<<<<<< Updated upstream
+=======
+		playerTransform = GetComponent<Transform>();
+		originalHeight = col.height;
+		originalSlideSpeed = slideSpeed;
+>>>>>>> Stashed changes
 	}
 
 	void Update()
@@ -30,6 +47,24 @@ public class playerCore : MonoBehaviour
 		float moveV = Input.GetAxis("Vertical");
 		move(moveH, moveV);
 
+<<<<<<< Updated upstream
+=======
+
+		if(Input.GetKeyDown(KeyCode.LeftControl))
+        {
+			isSliding = true;
+        }
+		else if(Input.GetKeyUp(KeyCode.LeftControl))
+        {
+			isSliding = false;
+			GetUp();
+        }
+		if(isSliding && IsGrounded())
+        {
+			Slide();
+        }
+
+>>>>>>> Stashed changes
 		if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
 			Pulo();
@@ -63,12 +98,71 @@ public class playerCore : MonoBehaviour
 		rbPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
     }
 
+<<<<<<< Updated upstream
+=======
+	void Slide()
+    {
+		col.height = reducedHeight;
+		if(playerTransform.rotation.eulerAngles.y == 180 && isSliding) // virado pra esquerda
+		{
+			col.center = new Vector3(0, -0.5f, 0);
+			rbPlayer.AddForce(new Vector3(-1, 0, 0) * slideSpeed, ForceMode.Impulse);
+			slideSpeed -= 4.5f * Time.deltaTime;
+			if (slideSpeed <= 0)
+			{
+				slideSpeed = 0;
+			}
+		}
+		else if(playerTransform.rotation.eulerAngles.y == 0 && isSliding)
+        {
+			col.center = new Vector3(0, -0.5f, 0);
+			rbPlayer.AddForce(new Vector3(1, 0, 0) * slideSpeed, ForceMode.Impulse);
+			slideSpeed -= 4.5f * Time.deltaTime;
+			if(slideSpeed <= 0)
+            {
+				slideSpeed = 0;
+            }
+		}
+
+	}
+	void GetUp()
+    {
+		col.center = new Vector3(0, 0, 0);
+		col.height = originalHeight;
+		slideSpeed = originalSlideSpeed;
+    }
+
+>>>>>>> Stashed changes
 	private bool IsGrounded()
     {
 		return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x,
 			col.bounds.min.y, col.bounds.center.z), col.radius * .9f, groundLayers);
     }
 
+<<<<<<< Updated upstream
+=======
+
+		void OnCollisionStay(Collision collisionInfo)
+		{
+			if(!IsGrounded())
+            {
+				if(Input.GetKeyDown(KeyCode.Space))
+                {
+					Debug.Log("WALLJUMP");
+                }
+            }
+			
+	}
+
+	
+
+
+
+
+
+
+
+>>>>>>> Stashed changes
     #endregion
     #region Metodos
     public void InventoryOpen(){

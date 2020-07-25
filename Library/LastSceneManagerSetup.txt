@@ -1,11 +1,5 @@
 sceneSetups:
-<<<<<<< HEAD
-- path: Assets/Scenes/Prototype.unity
-  isLoaded: 0
-  isActive: 0
-=======
-- path: Assets/Scenes/CastleLevel.unity
+- path: Assets/Scenes/SlideTest.unity
   isLoaded: 1
   isActive: 1
->>>>>>> master
   isSubScene: 0

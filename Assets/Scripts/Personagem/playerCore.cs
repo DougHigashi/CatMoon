@@ -15,21 +15,15 @@ public class playerCore : MonoBehaviour
 	[SerializeField] private float jumpForce = 20;
 	[SerializeField] private LayerMask groundLayers;
 	[SerializeField] private CapsuleCollider col;
-	private Rigidbody rbPlayer;
-	[SerializeField] private Transform playerTransform;
 	[SerializeField] private Rigidbody rbPlayer;
-	[SerializeField] private float originalHeight; 
-	[SerializeField] private float reducedHeight;
-	[SerializeField] private float slideSpeed;
-	[SerializeField] private float originalSlideSpeed;
-	[SerializeField] private bool isSliding;
-	[SerializeField] private bool TouchingWall;
 	[SerializeField] private Transform playerTransform;
-	[SerializeField] private Rigidbody rbPlayer;
 	[SerializeField] private float originalHeight; 
 	[SerializeField] private float reducedHeight;
 	[SerializeField] private float slideSpeed = 7f;
+	[SerializeField] private float originalSlideSpeed;
 	[SerializeField] private bool isSliding;
+	[SerializeField] private bool TouchingWall;
+
 
 	#endregion
 
@@ -63,8 +57,6 @@ public class playerCore : MonoBehaviour
         {
 			isSliding = false;
 			GetUp();
-
-			getUp();
         }
 		if(isSliding && IsGrounded())
         {
@@ -119,7 +111,7 @@ public class playerCore : MonoBehaviour
 			}
 		}
 
-        }
+        
 		else if(playerTransform.rotation.eulerAngles.y == 0 && isSliding)
         {
 			col.center = new Vector3(0, -0.5f, 0);
@@ -140,14 +132,9 @@ public class playerCore : MonoBehaviour
 		slideSpeed = originalSlideSpeed;
     }
 
-		}
 
-	}
-	void getUp()
-    {
-		col.center = new Vector3(0, 0, 0);
-		col.height = originalHeight;
-    }
+
+	
 
 	private bool IsGrounded()
     {
@@ -156,17 +143,7 @@ public class playerCore : MonoBehaviour
     }
 
 
-		void OnCollisionStay(Collision collisionInfo)
-		{
-			if(!IsGrounded())
-            {
-				if(Input.GetKeyDown(KeyCode.Space))
-                {
-					Debug.Log("WALLJUMP");
-                }
-            }
-			
-	}
+	
 
 	
 

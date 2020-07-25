@@ -1021,8 +1021,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   col: {fileID: 2108242368}
-  playerTransform: {fileID: 2108242371}
   rbPlayer: {fileID: 2108242373}
+  playerTransform: {fileID: 2108242371}
   originalHeight: 2
   reducedHeight: 1
   slideSpeed: 7
@@ -1058,9 +1058,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  attackPoint: {fileID: 943061170}
+  attackPoint: {fileID: 2108242371}
   enemyLayers:
     serializedVersion: 2
     m_Bits: 512
-  attackrange: 1.2
+  attackrange: 0.5
   attackDamage: 40

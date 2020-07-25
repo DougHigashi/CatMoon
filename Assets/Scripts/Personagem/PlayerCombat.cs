@@ -24,7 +24,8 @@ public class PlayerCombat : MonoBehaviour
     }
 
     void MeleeAttack()
-	{   
+	{
+        animator.SetTrigger("Attack");
         //Detecta o inimigo no alcance do ataque
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackrange, enemyLayers);
 	    

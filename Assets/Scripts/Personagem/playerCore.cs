@@ -6,22 +6,26 @@ using UnityEngine;
 public class playerCore : MonoBehaviour
 {
 	#region Variaveis
+	[Header("Atributos")]
 	[SerializeField] private int speed = 20;
-
 	[SerializeField] private int life;
 	[SerializeField] private int maxLife;
 	[SerializeField] private int mana;
 	[SerializeField] private GameObject OpenInventory;
-	[SerializeField] private float jumpForce = 20;
 	[SerializeField] private LayerMask groundLayers;
 	[SerializeField] private CapsuleCollider col;
 	[SerializeField] private Rigidbody rbPlayer;
 	[SerializeField] private Transform playerTransform;
+
+	[Header("Movimentação")]
+	[SerializeField] private float jumpForce = 20;
 	[SerializeField] private float originalHeight; 
 	[SerializeField] private float reducedHeight;
 	[SerializeField] private float slideSpeed = 7f;
 	[SerializeField] private float originalSlideSpeed;
 	[SerializeField] private bool isSliding;
+	
+	[Header("WallJump")]
 	[SerializeField] private bool TouchingWall;
 
 
@@ -35,9 +39,6 @@ public class playerCore : MonoBehaviour
 		playerTransform = GetComponent<Transform>();
 		originalHeight = col.height;
 		originalSlideSpeed = slideSpeed;
-
-		playerTransform = GetComponent<Transform>();
-		originalHeight = col.height;
 
 	}
 
@@ -143,27 +144,6 @@ public class playerCore : MonoBehaviour
     }
 
 
-	
-
-	
-
-
-
-	/*
-	void OnCollisionStay(Collision collisionInfo)
-	{
-		if(collisionInfo.collider.tag == "Wall" && !IsGrounded())
-        {
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				rbPlayer.AddForce(new Vector3(10, 1, 0) * jumpForce, ForceMode.Impulse);
-				Debug.Log("WALLJUMP");
-			}
-
-        }
-	}
-
-	*/
 
 
 

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.UI;
+
+
 public class playerCore : MagicSystem
 {
     #region Variaveis
@@ -27,6 +29,8 @@ public class playerCore : MagicSystem
 	[SerializeField] private float originalSlideSpeed;
 	
 	[SerializeField] private bool closeInventory;
+
+    
     #endregion
 
     void awake()

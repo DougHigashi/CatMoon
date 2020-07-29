@@ -65,6 +65,7 @@
   <ItemGroup>
     <Compile Include="Assets\Camera\FollowPlayer.cs" />
     <Compile Include="Assets\Scripts\Cenário\AttachPlataform.cs" />
+    <Compile Include="Assets\Scripts\Cenário\MovingPlataform.cs" />
     <Compile Include="Assets\Scripts\Monstros\Enemy.cs" />
     <Compile Include="Assets\Scripts\Personagem\InventorySystem.cs" />
     <Compile Include="Assets\Scripts\Personagem\Magias\DamageMultiply.cs" />

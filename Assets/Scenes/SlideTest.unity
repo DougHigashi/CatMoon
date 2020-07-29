@@ -914,8 +914,8 @@ GameObject:
   - component: {fileID: 2108242369}
   - component: {fileID: 2108242368}
   - component: {fileID: 2108242373}
-  - component: {fileID: 2108242372}
   - component: {fileID: 2108242374}
+  - component: {fileID: 2108242372}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1008,27 +1008,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 2108242367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33a1ac0a15fa3d14a93f423eac1fea38, type: 3}
+  m_Script: {fileID: 11500000, guid: cdc37b71f2534d749ab40ddb8e0f0b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  life: 0
-  maxLife: 0
-  mana: 0
-  OpenInventory: {fileID: 0}
-  jumpForce: 5.2
-  groundLayers:
+  animator: {fileID: 0}
+  attackPoint: {fileID: 0}
+  enemyLayers:
     serializedVersion: 2
-    m_Bits: 1
-  col: {fileID: 2108242368}
-  rbPlayer: {fileID: 2108242373}
-  playerTransform: {fileID: 2108242371}
-  originalHeight: 2
-  reducedHeight: 1
-  slideSpeed: 7
-  originalSlideSpeed: 7
-  isSliding: 0
-  TouchingWall: 0
+    m_Bits: 0
+  attackrange: 0.5
+  attackDamage: 40
 --- !u!54 &2108242373
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1054,13 +1043,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2108242367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdc37b71f2534d749ab40ddb8e0f0b5a, type: 3}
+  m_Script: {fileID: 11500000, guid: 33a1ac0a15fa3d14a93f423eac1fea38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  attackPoint: {fileID: 2108242371}
-  enemyLayers:
+  speed: 20
+  life: 0
+  maxLife: 0
+  mana: 0
+  manaMax: 0
+  OpenInventory: {fileID: 0}
+  jumpForce: 20
+  groundLayers:
     serializedVersion: 2
-    m_Bits: 512
-  attackrange: 0.5
-  attackDamage: 40
+    m_Bits: 0
+  col: {fileID: 2108242368}
+  playerTransform: {fileID: 2108242371}
+  rbPlayer: {fileID: 2108242373}
+  originalHeight: 2
+  reducedHeight: 1
+  slideSpeed: 7
+  isSliding: 0
+  _lifeBarImage: {fileID: 0}
+  _manaBarImage: {fileID: 0}
+  originalSlideSpeed: 7
+  closeInventory: 0

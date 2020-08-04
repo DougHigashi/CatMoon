@@ -1,47 +1,55 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.ComTypes;
 using UnityEngine;
 using UnityEngine.UI;
-
-
 public class playerCore : MagicSystem
 {
     #region Variaveis
+    [Header("Atributos do Player")]
     [SerializeField] private int speed = 20;
-
     [SerializeField] private int life;
     [SerializeField] private int maxLife;
     [SerializeField] private int mana;
     [SerializeField] private int manaMax;
+
+    [Header("Player Components")]
     [SerializeField] private GameObject OpenInventory;
-    [SerializeField] private float jumpForce = 20;
     [SerializeField] private LayerMask groundLayers;
     [SerializeField] private CapsuleCollider col;
     [SerializeField] private Transform playerTransform;
     [SerializeField] private Rigidbody rbPlayer;
+    [SerializeField] private Transform frontCheck; //Checa colisões com paredes
+
+    [Header("Player Movement Variables")]
+    [SerializeField] private float jumpForce = 20;
     [SerializeField] private float originalHeight;
     [SerializeField] private float reducedHeight;
     [SerializeField] private float slideSpeed = 7f;
+    [SerializeField] private float originalSlideSpeed;
     [SerializeField] private bool isSliding;
+    [SerializeField] private bool closeInventory;
+    [SerializeField] private bool touchingWall;
+    [SerializeField] private bool wallSlideable;
+    [SerializeField] private float wallSlideSpeed;
+
+
+    [Header("Images")]
     [SerializeField] private Image _lifeBarImage;
     [SerializeField] private Image _manaBarImage;
-	[SerializeField] private float originalSlideSpeed;
-	
-	[SerializeField] private bool closeInventory;
-
     
-    #endregion
 
+
+
+    #endregion
     void awake()
     {
         life = 20;
         maxLife = 50;
         mana = 20;
         manaMax = 50;
-        rbPlayer = GetComponent<Rigidbody>();
-        col = GetComponent<CapsuleCollider>();
-        playerTransform = GetComponent<Transform>();
+        rbPlayer = this.GetComponent<Rigidbody>();
+        col = this.GetComponent<CapsuleCollider>();
+        playerTransform = this.GetComponent<Transform>();
         originalHeight = col.height;
 		closeInventory = false;
 		//Mudanças
@@ -77,6 +85,8 @@ public class playerCore : MagicSystem
         {
             Pulo();
         }
+        
+
         if (Input.GetKeyDown(KeyCode.I))
         {
             Inventory();
@@ -107,6 +117,7 @@ public class playerCore : MagicSystem
     void Pulo()
     {
         rbPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+
     }
 
     void Slide()
@@ -149,24 +160,6 @@ public class playerCore : MagicSystem
         return Physics.CheckCapsule(col.bounds.center, new Vector3(col.bounds.center.x,
             col.bounds.min.y, col.bounds.center.z), col.radius * .9f, groundLayers);
     }
-
-    /*
-	void OnCollisionStay(Collision collisionInfo)
-	{
-		if(collisionInfo.collider.tag == "Wall" && !IsGrounded())
-        {
-			if(Input.GetKeyDown(KeyCode.Space))
-			{
-				rbPlayer.AddForce(new Vector3(10, 1, 0) * jumpForce, ForceMode.Impulse);
-				Debug.Log("WALLJUMP");
-			}
-
-        }
-	}
-
-	*/
-
-
 
 
 
@@ -242,6 +235,7 @@ public class playerCore : MagicSystem
     {
 
     }
+
     #endregion
     #region Inventory
     public void Inventory()

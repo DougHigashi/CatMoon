@@ -67,7 +67,9 @@
     <Compile Include="Assets\Scripts\Cenário\AttachPlataform.cs" />
     <Compile Include="Assets\Scripts\Cenário\MovingPlataform.cs" />
     <Compile Include="Assets\Scripts\Monstros\Enemy.cs" />
-    <Compile Include="Assets\Scripts\Personagem\InventorySystem.cs" />
+    <Compile Include="Assets\Scripts\Personagem\Inventario\InventoryInterface.cs" />
+    <Compile Include="Assets\Scripts\Personagem\Inventario\InventorySystem.cs" />
+    <Compile Include="Assets\Scripts\Personagem\Inventario\PlayerInventory.cs" />
     <Compile Include="Assets\Scripts\Personagem\Magias\DamageMultiply.cs" />
     <Compile Include="Assets\Scripts\Personagem\Magias\MagicFire.cs" />
     <Compile Include="Assets\Scripts\Personagem\Magias\MagicPoison.cs" />

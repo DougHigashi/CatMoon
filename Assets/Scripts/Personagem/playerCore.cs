@@ -22,6 +22,8 @@ public class playerCore : MagicSystem
 
     [Header("Player Movement Variables")]
     [SerializeField] private float jumpForce = 20;
+    [SerializeField] private float fallMultiplier;
+    [SerializeField] private float lowJumpMultiplier;
     [SerializeField] private float originalHeight;
     [SerializeField] private float reducedHeight;
     [SerializeField] private float slideSpeed = 7f;
@@ -47,6 +49,8 @@ public class playerCore : MagicSystem
         maxLife = 50;
         mana = 20;
         manaMax = 50;
+        this.fallMultiplier = 2.5f;
+        this.lowJumpMultiplier = 2f;
         rbPlayer = this.GetComponent<Rigidbody>();
         col = this.GetComponent<CapsuleCollider>();
         playerTransform = this.GetComponent<Transform>();
@@ -65,6 +69,7 @@ public class playerCore : MagicSystem
         float moveV = Input.GetAxis("Vertical");
         bool slide = Input.GetKey(KeyCode.LeftControl);
         move(moveH, moveV);
+        BetterJump();
 
 
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -116,8 +121,18 @@ public class playerCore : MagicSystem
     #region Pulo
     void Pulo()
     {
-        rbPlayer.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        rbPlayer.velocity = Vector3.up * jumpForce;
+    }
 
+    void BetterJump()
+    {
+        if(rbPlayer.velocity.y < 0)
+        {
+            rbPlayer.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }else if(rbPlayer.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        {
+            rbPlayer.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        }
     }
 
     void Slide()
@@ -132,10 +147,7 @@ public class playerCore : MagicSystem
             {
                 slideSpeed = 0;
             }
-        }
-
-
-        else if (playerTransform.rotation.eulerAngles.y == 0 && isSliding)
+        }else if (playerTransform.rotation.eulerAngles.y == 0 && isSliding)
         {
             col.center = new Vector3(0, -0.5f, 0);
             rbPlayer.AddForce(new Vector3(1, 0, 0) * slideSpeed, ForceMode.Impulse);

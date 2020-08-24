@@ -7531,6 +7531,16 @@ PrefabInstance:
       propertyPath: rbPlayer
       value: 
       objectReference: {fileID: 1828922108}
+    - target: {fileID: 7562405660025868648, guid: d734952bba690894fa523257cf51184c,
+        type: 3}
+      propertyPath: fallMultiplier
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562405660025868648, guid: d734952bba690894fa523257cf51184c,
+        type: 3}
+      propertyPath: lowJumpMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7562405660025868653, guid: d734952bba690894fa523257cf51184c,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

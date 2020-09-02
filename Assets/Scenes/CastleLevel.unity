@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 43f95bce12fbe0d41aeae6bf1eb0cc26,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -127,7 +128,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14540
+  m_Name: pb_Mesh16880
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1002,7 +1003,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14364
+  m_Name: pb_Mesh16704
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -4160,7 +4161,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14622
+  m_Name: pb_Mesh16962
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -5067,7 +5068,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14582
+  m_Name: pb_Mesh16922
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -6224,7 +6225,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14446
+  m_Name: pb_Mesh16786
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7307,7 +7308,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14346
+  m_Name: pb_Mesh16686
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -7471,6 +7472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1118955739321707238, guid: d734952bba690894fa523257cf51184c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 270c41c9d3b5abb4692c91c4b373fb93, type: 2}
     - target: {fileID: 7562405660025868563, guid: d734952bba690894fa523257cf51184c,
         type: 3}
       propertyPath: m_Name
@@ -7535,7 +7541,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 270c41c9d3b5abb4692c91c4b373fb93, type: 2}
+      objectReference: {fileID: 2100000, guid: d5120ebfdc18be54f9cbc82b2e8a57f6, type: 2}
     - target: {fileID: 7562405660025868655, guid: d734952bba690894fa523257cf51184c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7599,7 +7605,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14400
+  m_Name: pb_Mesh16740
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8359,7 +8365,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1268
+  m_Name: pb_Mesh-1478
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8522,7 +8528,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14460
+  m_Name: pb_Mesh16800
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8909,7 +8915,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14412
+  m_Name: pb_Mesh16752
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9726,7 +9732,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14512
+  m_Name: pb_Mesh16852
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -9889,7 +9895,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14668
+  m_Name: pb_Mesh17008
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -10098,7 +10104,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 270c41c9d3b5abb4692c91c4b373fb93, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12907,7 +12913,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh14492
+  m_Name: pb_Mesh16832
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -13088,7 +13094,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1250
+  m_Name: pb_Mesh-1460
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

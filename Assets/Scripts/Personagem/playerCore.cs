@@ -7,8 +7,8 @@ public class playerCore : MagicSystem
     #region Variaveis
     [Header("Atributos do Player")]
     [SerializeField] private int speed = 20;
-    [SerializeField] private int life;
-    [SerializeField] private int maxLife;
+    [SerializeField] private int life = 20;
+    [SerializeField] private int maxLife = 50;
     [SerializeField] private int mana;
     [SerializeField] private int manaMax;
 
@@ -26,7 +26,7 @@ public class playerCore : MagicSystem
     [SerializeField] private float lowJumpMultiplier;
     [SerializeField] private float originalHeight;
     [SerializeField] private float reducedHeight;
-    [SerializeField] private float slideSpeed = 7f;
+    [SerializeField] private float slideSpeed;
     [SerializeField] private float originalSlideSpeed;
     [SerializeField] private bool isSliding;
     [SerializeField] private bool closeInventory;
@@ -38,31 +38,34 @@ public class playerCore : MagicSystem
     [Header("Images")]
     [SerializeField] private Image _lifeBarImage;
     [SerializeField] private Image _manaBarImage;
-    
+
 
 
 
     #endregion
     void awake()
     {
-        life = 20;
-        maxLife = 50;
-        mana = 20;
-        manaMax = 50;
+        this.life = 50;
+        this.maxLife = 50;
+        this.mana = 20;
+        this.manaMax = 50;
         this.fallMultiplier = 2.5f;
         this.lowJumpMultiplier = 2f;
-        rbPlayer = this.GetComponent<Rigidbody>();
-        col = this.GetComponent<CapsuleCollider>();
-        playerTransform = this.GetComponent<Transform>();
-        originalHeight = col.height;
-		closeInventory = false;
-		//Mudanças
-		originalSlideSpeed = slideSpeed;
+        this.rbPlayer = this.GetComponent<Rigidbody>();
+        this.col = this.GetComponent<CapsuleCollider>();
+        this.playerTransform = this.GetComponent<Transform>();
+        this.originalHeight = col.height;
+        this.closeInventory = false;
+        //Mudanças
+        slideSpeed =7f;
+        originalSlideSpeed = slideSpeed;
+
+
     }
-	// playerCore => playerController
-	//Core = trata as informações
-	//Controller => Core = trata elasa;
-	//(Controller) => Movimentações
+    // playerCore => playerController
+    //Core = trata as informações
+    //Controller => Core = trata elasa;
+    //(Controller) => Movimentações
     void Update()
     {
         float moveH = Input.GetAxis("Horizontal");
@@ -90,7 +93,7 @@ public class playerCore : MagicSystem
         {
             Pulo();
         }
-        
+
 
         if (Input.GetKeyDown(KeyCode.I))
         {
@@ -126,10 +129,11 @@ public class playerCore : MagicSystem
 
     void BetterJump()
     {
-        if(rbPlayer.velocity.y < 0)
+        if (rbPlayer.velocity.y < 0)
         {
             rbPlayer.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
-        }else if(rbPlayer.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        }
+        else if (rbPlayer.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
         {
             rbPlayer.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
@@ -147,7 +151,8 @@ public class playerCore : MagicSystem
             {
                 slideSpeed = 0;
             }
-        }else if (playerTransform.rotation.eulerAngles.y == 0 && isSliding)
+        }
+        else if (playerTransform.rotation.eulerAngles.y == 0 && isSliding)
         {
             col.center = new Vector3(0, -0.5f, 0);
             rbPlayer.AddForce(new Vector3(1, 0, 0) * slideSpeed, ForceMode.Impulse);
@@ -164,7 +169,7 @@ public class playerCore : MagicSystem
     {
         col.center = new Vector3(0, 0, 0);
         col.height = originalHeight;
-		slideSpeed = originalSlideSpeed;
+        slideSpeed = originalSlideSpeed;
     }
 
     private bool IsGrounded()
@@ -178,7 +183,7 @@ public class playerCore : MagicSystem
     #endregion
     #region Controlador_De_Vida
     public int GetHealth() => this.life;
-    public void SetHealt(int _life)
+    public void SetHealth(int _life)
     {
         if (_life > maxLife)
         {
@@ -196,7 +201,8 @@ public class playerCore : MagicSystem
             DeathController();
         }
     }
-    public void IncrementHealth(int lifeIncrement) => this.SetHealt(this.life + lifeIncrement);
+    public void AddHealth(int lifeIncrement) => this.SetHealth(this.life + lifeIncrement);
+    public void RemoveHealth(int lifeIncrement) => this.SetHealth(this.life - lifeIncrement);
     public void UpdateLifeBar() => this._lifeBarImage.fillAmount = ((1.0f / this.maxLife) * this.life);
     public void DeathController()
     {
@@ -233,15 +239,16 @@ public class playerCore : MagicSystem
     {
         if (other.gameObject.tag == "Inimigo")
         {
-            SetHealt(2);
+            RemoveHealth(2);
         }
         if (other.gameObject.tag == "armadilhas")
         {
-            SetHealt(2);
+            SetHealth(2);
         }
-		if(other.gameObject.tag == "limbo"){
-			DeathController();
-		}
+        if (other.gameObject.tag == "limbo")
+        {
+            DeathController();
+        }
     }
     void OnTriggerEnter(Collider other)
     {
@@ -252,16 +259,16 @@ public class playerCore : MagicSystem
     #region Inventory
     public void Inventory()
     {
-        if  (closeInventory == false)
+        if (closeInventory == false)
         {
-			Debug.Log("Abrindo Inventario");
-			closeInventory = true;
+            Debug.Log("Abrindo Inventario");
+            closeInventory = true;
             OpenInventory.gameObject.SetActive(true);
         }
         else
         {
-			closeInventory = false;
-			Debug.Log("Fechando Inventario");
+            closeInventory = false;
+            Debug.Log("Fechando Inventario");
             OpenInventory.gameObject.SetActive(false);
         }
     }

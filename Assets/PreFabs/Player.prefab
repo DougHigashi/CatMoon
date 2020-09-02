@@ -376,26 +376,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  life: 0
-  maxLife: 0
-  mana: 0
-  manaMax: 0
+  life: 20
+  maxLife: 50
+  mana: 50
+  manaMax: 50
   OpenInventory: {fileID: 0}
-  jumpForce: 20
   groundLayers:
     serializedVersion: 2
     m_Bits: 512
   col: {fileID: 7562405660025868652}
   playerTransform: {fileID: 7562405660025868655}
   rbPlayer: {fileID: 7562405660025868649}
-  originalHeight: 0
-  reducedHeight: 0
+  frontCheck: {fileID: 0}
+  jumpForce: 20
+  fallMultiplier: 0
+  lowJumpMultiplier: 0
+  originalHeight: 5
+  reducedHeight: 2.5
   slideSpeed: 7
+  originalSlideSpeed: 7
   isSliding: 0
+  closeInventory: 0
+  touchingWall: 0
+  wallSlideable: 0
+  wallSlideSpeed: 0
   _lifeBarImage: {fileID: 0}
   _manaBarImage: {fileID: 0}
-  originalSlideSpeed: 0
-  closeInventory: 0
 --- !u!1001 &7562405659339762829
 PrefabInstance:
   m_ObjectHideFlags: 0
